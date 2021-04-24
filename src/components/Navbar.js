@@ -19,12 +19,17 @@ function CartButton(props){
 function MenuItem({title, items}) {
     return(
         <div className="menu-item">
-            {title}
+            {title.toUpperCase()}
+
+            {
+                items&& <i className="fas fa-caret-down"/>
+            }
+
 
             {
                 items&& <div className="popup-menu">
                     {
-                        items.map(item_data => <small key={item_data}>{item_data}</small>)
+                        items.map(item_data => <div key={item_data} className="menu-item">{item_data}</div>)
                     }
                 </div>
             }
@@ -33,7 +38,7 @@ function MenuItem({title, items}) {
 }
 
 function Menu(props) {
-    const [menu_list, set_menu_list] = useState()
+    const [menu_list, set_menu_list] = useState([])
 
     const fetch = () => {
         axios({
