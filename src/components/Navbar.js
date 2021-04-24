@@ -16,19 +16,21 @@ function CartButton(props){
     )
 }
 
-
 function MenuItem({title, items}) {
     return(
         <div>
             {title}
 
             {
-                items&& <small> Popup menu...</small>
+                items&& <div className="popup-menu">
+                    {
+                        items.map(item_data => <small key={item_data}>{item_data}</small>)
+                    }
+                </div>
             }
         </div>
     )
 }
-
 
 function Menu(props) {
     const [menu_list, set_menu_list] = useState()
@@ -54,6 +56,7 @@ function Menu(props) {
         </div>
     )
 }
+
 
 
 function Navbar(props) {
