@@ -16,6 +16,18 @@ function Slider(props) {
             .catch(err => console.log(err))
     }
 
+    const step_action = (value) => {
+        let _index = current_index
+        _index += value
+        if(_index > image_list.length -1){
+            _index = 0
+        }else if (_index < 0){
+            _index = image_list.length -1
+        }
+
+        set_current_index(_index)
+    }
+
     useEffect(() => {
         fetch()
     }, [])
@@ -24,18 +36,18 @@ function Slider(props) {
         <div className="slider-container">
             <div className="image-container">
                 {
-                    image_list.map(data => <img className={"slider-image"} src={data.image} alt=""/>)
+                    image_list.map((data, index) => <img className={`slider-image ${current_index === index? "active":""}`} src={data.image} alt=""/>)
                 }
             </div>
 
             <div className="step-button-container">
-                <i className="fas fa-chevron-left"/>
-                <i className="fas fa-chevron-right"/>
+                <i className="fas fa-chevron-left" onClick={() => step_action(-1)}/>
+                <i className="fas fa-chevron-right" onClick={() => step_action(1)}/>
             </div>
 
             <div className="step-circles-container">
                 {
-                    image_list.map(data => <i className={"fas fa-circle"}/> )
+                    image_list.map((data, index) => <i className={`fas fa-circle ${current_index === index? "active":""}`} onClick={()=> set_current_index(index)}/> )
                 }
             </div>
 

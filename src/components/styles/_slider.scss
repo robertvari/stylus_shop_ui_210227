@@ -21,6 +21,11 @@
       object-fit: contain;
       position: absolute;
       transition: opacity 0.5s;
+      opacity: 0;
+    }
+
+    .active{
+      opacity: 1;
     }
   }
 
@@ -43,6 +48,15 @@
   .step-circles-container{
     position: absolute;
     bottom: 0;
+    
+    i {
+      cursor: pointer;
+      margin: 0 0.3rem;
+    }
+
+    .active{
+      color: lightblue;
+    }
   }
 
   &:hover{
