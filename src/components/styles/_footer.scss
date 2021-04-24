@@ -1,0 +1,40 @@
+@import "base";
+
+footer{
+  background-color: #f2f2f2;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: #777777;
+
+  .content{
+    display: flex;
+    max-width: $content-width;
+    margin: 0 auto;
+
+    justify-content: space-between;
+
+    .footer-block{
+      display: flex;
+      flex-direction: column;
+      max-width: 30rem;
+    }
+
+    .signup-container{
+      flex-direction: row;
+
+      input, button{
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        outline: none;
+        font: inherit;
+        padding: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      button{
+        cursor: pointer;
+        font: inherit;
+        color: inherit;
+      }
+    }
+  }
+}
