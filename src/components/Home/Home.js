@@ -1,8 +1,26 @@
 import React from 'react';
+import Slider from "./Slider";
+import Categories from "./Categories";
+import FeaturedList from "./FeaturedList";
+import AnalogList from "./AnalogList";
 
 function Home(props) {
     return (
-        <h1>Home Page</h1>
+        <div>
+            <Slider/>
+
+            <hr/>
+
+            <Categories/>
+
+            <hr/>
+
+            <FeaturedList/>
+
+            <hr/>
+
+            <AnalogList/>
+        </div>
     );
 }
 
