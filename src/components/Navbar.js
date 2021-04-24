@@ -20,17 +20,18 @@ function CartButton(props){
 function MenuItem({title, items}) {
     return(
         <div className="menu-item">
-            {title.toUpperCase()}
+            <Link to={`/categories/${title}`}>
+                {title.toUpperCase()}
 
-            {
-                items&& <i className="fas fa-caret-down"/>
-            }
-
+                {
+                    items&& <i className="fas fa-caret-down"/>
+                }
+            </Link>
 
             {
                 items&& <div className="popup-menu">
                     {
-                        items.map(item_data => <div key={item_data} className="menu-item">{item_data}</div>)
+                        items.map(item_data => <Link to={`/categories/${title}/${item_data}`} key={item_data} className="menu-item">{item_data}</Link>)
                     }
                 </div>
             }
