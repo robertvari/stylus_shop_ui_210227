@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios"
+import {Link} from "react-router-dom";
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -85,10 +86,10 @@ function Navbar(props) {
 
             <div className="content">
 
-                <small className="sign-in-container">Sign in or Create an Account</small>
+                <small className="sign-in-container"><Link to="/login">Sign</Link> in or <Link to="/registration">Create an Account</Link></small>
 
                 <div className="search-container">
-                    <h1>{site_info.name}</h1>
+                    <Link to="/"><h1>{site_info.name}</h1></Link>
 
                     <div>
                         <SearchField/>

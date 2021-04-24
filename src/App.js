@@ -32,7 +32,6 @@ function App() {
                     <Route path="/registration" component={RegistrationPage}/>
                     <Route path="/password-reset" component={PasswordResetPage}/>
 
-
                     <Route path="/" component={Home}/>
                 </Switch>
             </div>
