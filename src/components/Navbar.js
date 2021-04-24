@@ -18,7 +18,7 @@ function CartButton(props){
 
 function MenuItem({title, items}) {
     return(
-        <div>
+        <div className="menu-item">
             {title}
 
             {
@@ -49,7 +49,7 @@ function Menu(props) {
     }, [])
 
     return (
-        <div>
+        <div className="menu-container">
             {
                 menu_list.map(menu_data => <MenuItem key={menu_data.id} title={menu_data.title} items={menu_data.items}/>)
             }
@@ -85,8 +85,11 @@ function Navbar(props) {
                 <div className="search-container">
                     <h1>{site_info.name}</h1>
 
-                    <SearchField/>
-                    <CartButton/>
+                    <div>
+                        <SearchField/>
+                        <CartButton/>
+                    </div>
+
                 </div>
 
                 <Menu/>
