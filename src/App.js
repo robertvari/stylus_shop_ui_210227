@@ -22,7 +22,7 @@ function App() {
         <div className="App">
             <Navbar/>
 
-            <div className={"content-container"}>
+            <div className="content-container">
                 <Switch>
                     <Route path="/categories/:category/:subcategory?" component={ItemListPage}/>
                     <Route path="/details/:id" component={ItemDetailsPage}/>
