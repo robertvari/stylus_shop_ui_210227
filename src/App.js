@@ -1,7 +1,17 @@
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import "./components/styles/main.scss"
+
 function App() {
   return (
     <div className="App">
-      <h1>Stylus Shop</h1>
+        <Navbar/>
+
+        <div className={"content-container"}>
+            <p>Content..</p>
+        </div>
+
+        <Footer/>
     </div>
   );
 }
