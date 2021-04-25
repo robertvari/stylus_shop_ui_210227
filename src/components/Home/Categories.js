@@ -7,6 +7,7 @@ const API_URL = process.env.REACT_APP_API_URL
 function CategoryCard({data}){
     return(
         <Link to={`/categories/${data.title}`} className={"card"}>
+            <img src={data.image} alt=""/>
             {data.title}
         </Link>
     )
@@ -31,7 +32,7 @@ function Categories(props) {
 
     return (
         <div className="home-collection-container">
-            <h1>Shop For</h1>
+            <h4>Shop For</h4>
             <div className="cards-container">
                 {
                     categories.map(data => <CategoryCard key={data.id} data={data}/>)

@@ -1,8 +1,12 @@
 import React from 'react';
 
-function ItemCard(props) {
+function ItemCard({data}) {
     return (
-        <div>Item Card</div>
+        <div className="card item-card">
+            <img src={data.image} alt=""/>
+            <small>{data.summary}</small>
+            <div className="price">{data.price}</div>
+        </div>
     );
 }
 
