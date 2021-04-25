@@ -45,7 +45,7 @@ function ShoppingCart(props) {
                             }
 
                             <hr/>
-                            <h2 className="subtotal">Subtotal: ${total}</h2>
+                            <h2 className="subtotal">Subtotal: ${numberWithCommas(total)}</h2>
 
                             <button onClick={() => set_visible(false)}><i className="fas fa-shopping-cart"/> CHECK OUT</button>
                         </Fragment>
