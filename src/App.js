@@ -14,6 +14,7 @@ import CheckoutPage from "./components/Pages/CheckoutPage";
 import SignInPage from "./components/Pages/SignInPage";
 import RegistrationPage from "./components/Pages/RegistrationPage";
 import PasswordResetPage from "./components/Pages/PasswordResetPage";
+import ShoppingCart from "./components/ShoppingCart";
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
     <Router>
 
         <div className="App">
+            <ShoppingCart/>
+
             <div>
                 <Navbar/>
 
