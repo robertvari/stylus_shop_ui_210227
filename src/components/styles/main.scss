@@ -6,6 +6,13 @@
 @import "item_list";
 @import "details_page";
 
+.App{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .content-container{
   max-width: $content-width;
   margin: 1rem auto;

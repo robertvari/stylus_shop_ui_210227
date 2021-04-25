@@ -19,10 +19,12 @@ import PasswordResetPage from "./components/Pages/PasswordResetPage";
 function App() {
   return (
     <Router>
-        <div className="App">
-            <Navbar/>
 
-            <div className="content-container">
+        <div className="App">
+            <div>
+                <Navbar/>
+
+                <div className="content-container">
                 <Switch>
                     <Route path="/categories/:category/:subcategory?" component={ItemListPage}/>
                     <Route path="/details/:id" component={ItemDetailsPage}/>
@@ -35,10 +37,11 @@ function App() {
                     <Route path="/" component={Home}/>
                 </Switch>
             </div>
+            </div>
 
             <Footer/>
-
         </div>
+
     </Router>
   );
 }
