@@ -13,10 +13,15 @@ function SearchField(props) {
 }
 
 function CartButton(props){
-    const {set_visible} = useContext(ShoppingCartContext)
+    const {set_visible, count} = useContext(ShoppingCartContext)
 
     return(
-        <button onClick={() => set_visible(true)}><i className="fas fa-shopping-cart"/> CART</button>
+        <button onClick={() => set_visible(true)}>
+            <i className="fas fa-shopping-cart"/> CART
+            <div className="item-counter">
+                {count}
+            </div>
+        </button>
     )
 }
 

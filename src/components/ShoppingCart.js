@@ -16,7 +16,7 @@ function CartItem({data}){
 
 
 function ShoppingCart(props) {
-    const {visible, set_visible, count} = useContext(ShoppingCartContext)
+    const {visible, set_visible, count, shopping_list} = useContext(ShoppingCartContext)
 
     if(!visible) return null
 
@@ -32,6 +32,10 @@ function ShoppingCart(props) {
                             <h2>Shopping Cart</h2>
 
                             <hr/>
+
+                            {
+                                shopping_list.map(item_data => <CartItem key={item_data.id} data={item_data}/>)
+                            }
 
                             <hr/>
                             <h2 className="subtotal">Subtotal: $160</h2>

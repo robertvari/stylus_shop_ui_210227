@@ -34,6 +34,20 @@ export const ShoppingCartProvider = (props) => {
         set_shopping_list(_shopping_list)
     }
 
+    const calc_count = () => {
+        let _count = 0
+        for(let i=0; i< shopping_list.length; i++){
+            let item = shopping_list[i]
+            _count += item.quantity
+        }
+        set_count(_count)
+    }
+
+
+    useEffect(()=> {
+        calc_count()
+    }, [shopping_list])
+
     return(
         <ShoppingCartContext.Provider value={{
             visible: visible,

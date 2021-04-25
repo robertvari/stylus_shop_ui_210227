@@ -57,9 +57,25 @@
         transition: background-color 0.3s;
         color: white;
         font: inherit;
+        position: relative;
 
         i{
           margin-right: 0.5rem;
+        }
+
+        .item-counter{
+         background-color: #dd2525;
+          font-weight: 800;
+          color: #182e49;
+          width: 1.5rem;
+          height: 1.5rem;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: -0.5rem;
+          right: -0.5rem;
         }
 
         &:hover{
