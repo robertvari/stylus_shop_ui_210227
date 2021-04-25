@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom"
 import axios from "axios";
+import ItemCard from "../Home/ItemCard";
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -24,14 +25,16 @@ function ItemListPage(props) {
 
     return (
         <div className="item-list-container">
-            {
-                items.filter(
-                    data => subcategory?
-                        data.category === category && data.subcategory === subcategory
-                        :
-                        data.category === category
-                ).map(data => <div>{data.title}</div>)
-            }
+            <div className="item-grid">
+                {
+                    items.filter(
+                        data => subcategory?
+                            data.category === category && data.subcategory === subcategory
+                            :
+                            data.category === category
+                    ).map(data => <ItemCard key={data.id} data={data}/>)
+                }
+            </div>
         </div>
     );
 }
