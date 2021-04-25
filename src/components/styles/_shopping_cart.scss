@@ -19,6 +19,21 @@
     display: flex;
     flex-direction: column;
 
+    .cart-item-container{
+      display: grid;
+      grid-template-columns: 5rem auto 2rem 3rem 1rem;
+      align-items: center;
+      grid-gap: 1rem;
+
+      img{
+        width: 100%;
+      }
+
+      .close-icon{
+        align-self: center;
+      }
+    }
+
     .subtotal{
       align-self: flex-end;
       margin: 1rem 0;

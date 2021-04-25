@@ -16,10 +16,13 @@ import RegistrationPage from "./components/Pages/RegistrationPage";
 import PasswordResetPage from "./components/Pages/PasswordResetPage";
 import ShoppingCart from "./components/ShoppingCart";
 
+import {ShoppingCartProvider} from "./components/contexts/ShoppingCartContext";
+
 
 function App() {
   return (
     <Router>
+        <ShoppingCartProvider>
 
         <div className="App">
             <ShoppingCart/>
@@ -45,6 +48,7 @@ function App() {
             <Footer/>
         </div>
 
+        </ShoppingCartProvider>
     </Router>
   );
 }
