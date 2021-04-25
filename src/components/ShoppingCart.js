@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {ShoppingCartContext} from "./contexts/ShoppingCartContext";
+import {Link} from "react-router-dom";
 
 function CartItem({data}){
     return(
@@ -15,7 +16,7 @@ function CartItem({data}){
 
 
 function ShoppingCart(props) {
-    const {visible, set_visible} = useContext(ShoppingCartContext)
+    const {visible, set_visible, count} = useContext(ShoppingCartContext)
 
     if(!visible) return null
 
@@ -23,15 +24,26 @@ function ShoppingCart(props) {
         <div className="cart-container" onClick={() => set_visible(false)}>
 
             <div className="card" onClick={e => e.stopPropagation()}>
-                <i className="far fa-times-circle close-icon" onClick={() => set_visible(false)}/>
-                <h2>Shopping Cart</h2>
 
-                <hr/>
+                {
+                    count > 0?
+                        <div>
+                            <i className="far fa-times-circle close-icon" onClick={() => set_visible(false)}/>
+                            <h2>Shopping Cart</h2>
 
-                <hr/>
-                <h2 className="subtotal">Subtotal: $160</h2>
+                            <hr/>
 
-                <button onClick={() => set_visible(false)}><i className="fas fa-shopping-cart"/> CHECK OUT</button>
+                            <hr/>
+                            <h2 className="subtotal">Subtotal: $160</h2>
+
+                            <button onClick={() => set_visible(false)}><i className="fas fa-shopping-cart"/> CHECK OUT</button>
+                        </div>
+                        :
+                        <div>
+                            <h2>YOUR CART IS CURRENTLY EMPTY.</h2>
+                            <small>Continue browsing <Link to={"/"} onClick={() => set_visible(false)}>here.</Link></small>
+                        </div>
+                }
             </div>
         </div>
     );
