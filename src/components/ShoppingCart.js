@@ -19,7 +19,11 @@ function CartItem({data}){
 
 
 function ShoppingCart(props) {
-    const {visible, set_visible, count, shopping_list} = useContext(ShoppingCartContext)
+    const {visible, set_visible, count, shopping_list, total} = useContext(ShoppingCartContext)
+
+    const numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     if(!visible) return null
 
@@ -41,7 +45,7 @@ function ShoppingCart(props) {
                             }
 
                             <hr/>
-                            <h2 className="subtotal">Subtotal: $160</h2>
+                            <h2 className="subtotal">Subtotal: ${total}</h2>
 
                             <button onClick={() => set_visible(false)}><i className="fas fa-shopping-cart"/> CHECK OUT</button>
                         </Fragment>
