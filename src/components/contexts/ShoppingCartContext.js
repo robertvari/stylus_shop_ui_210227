@@ -34,6 +34,11 @@ export const ShoppingCartProvider = (props) => {
         set_shopping_list(_shopping_list)
     }
 
+    const remove_from_cart = (item_id) => {
+        const _shopping_list = shopping_list.filter(item => item.id !== item_id)
+        set_shopping_list(_shopping_list)
+    }
+
     const calc_count = () => {
         let _count = 0
         for(let i=0; i< shopping_list.length; i++){
@@ -43,9 +48,21 @@ export const ShoppingCartProvider = (props) => {
         set_count(_count)
     }
 
+    const calc_total = () => {
+        let _total = 0
+
+        for(let i=0; i < shopping_list.length; i++){
+            const current_item = shopping_list[i]
+            const _price = Number(current_item.price.replace(/[^0-9.-]+/g,""));
+            _total += _price * current_item.quantity
+        }
+
+        set_total(_total)
+    }
 
     useEffect(()=> {
         calc_count()
+        calc_total()
     }, [shopping_list])
 
     return(
@@ -56,7 +73,8 @@ export const ShoppingCartProvider = (props) => {
             set_shopping_list: set_shopping_list,
             count: count,
             total: total,
-            add_to_cart: add_to_cart
+            add_to_cart: add_to_cart,
+            remove_from_cart: remove_from_cart
         }}>
             {props.children}
         </ShoppingCartContext.Provider>

@@ -18,9 +18,11 @@ function CartButton(props){
     return(
         <button onClick={() => set_visible(true)}>
             <i className="fas fa-shopping-cart"/> CART
-            <div className="item-counter">
-                {count}
-            </div>
+
+            {
+                count>0&& <div className="item-counter">{count}</div>
+            }
+
         </button>
     )
 }
