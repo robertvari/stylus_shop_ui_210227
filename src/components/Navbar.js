@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from "axios"
 import {Link} from "react-router-dom";
+import {ShoppingCartContext} from "./contexts/ShoppingCartContext";
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -12,8 +13,10 @@ function SearchField(props) {
 }
 
 function CartButton(props){
+    const {set_visible} = useContext(ShoppingCartContext)
+
     return(
-        <button><i className="fas fa-shopping-cart"/> CART</button>
+        <button onClick={() => set_visible(true)}><i className="fas fa-shopping-cart"/> CART</button>
     )
 }
 

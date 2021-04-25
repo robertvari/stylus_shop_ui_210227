@@ -3,12 +3,12 @@ import React, {useState, createContext, useEffect} from "react"
 export const ShoppingCartContext = createContext(true)
 
 export const ShoppingCartProvider = (props) => {
-    const [my_name, set_my_name] = useState("Robert")
+    const [visible, set_visible] = useState(false)
 
     return(
         <ShoppingCartContext.Provider value={{
-            my_name: my_name,
-            set_my_name: set_my_name
+            visible: visible,
+            set_visible: set_visible
         }}>
             {props.children}
         </ShoppingCartContext.Provider>

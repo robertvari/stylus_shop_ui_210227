@@ -15,23 +15,23 @@ function CartItem({data}){
 
 
 function ShoppingCart(props) {
-    // if(!visible) return null
-    const {my_name, set_my_name} = useContext(ShoppingCartContext)
+    const {visible, set_visible} = useContext(ShoppingCartContext)
+
+    if(!visible) return null
 
     return (
-        <div className="cart-container">
-            <div className="card">
-                <i className="far fa-times-circle close-icon"/>
-                <h2>Shopping Cart</h2>
+        <div className="cart-container" onClick={() => set_visible(false)}>
 
-                <h1>{my_name}</h1>
+            <div className="card" onClick={e => e.stopPropagation()}>
+                <i className="far fa-times-circle close-icon" onClick={() => set_visible(false)}/>
+                <h2>Shopping Cart</h2>
 
                 <hr/>
 
                 <hr/>
                 <h2 className="subtotal">Subtotal: $160</h2>
 
-                <button onClick={() => set_my_name("Csaba")}><i className="fas fa-shopping-cart"/> CHECK OUT</button>
+                <button onClick={() => set_visible(false)}><i className="fas fa-shopping-cart"/> CHECK OUT</button>
             </div>
         </div>
     );
