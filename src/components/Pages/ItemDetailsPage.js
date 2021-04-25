@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import axios from "axios";
+import {ShoppingCartContext} from "../contexts/ShoppingCartContext";
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -12,10 +13,12 @@ function Image({data}) {
     )
 }
 
-function Buttons() {
+function Buttons({item_data}) {
+    const {add_to_cart} = useContext(ShoppingCartContext)
+
     return (
         <div className="buttons-layout">
-            <button className="inverted"><i className="fas fa-shopping-cart"/> ADD TO CART</button>
+            <button className="inverted" onClick={() => add_to_cart(item_data)}><i className="fas fa-shopping-cart"/> ADD TO CART</button>
             <button>BUY IT NOW</button>
         </div>
     )
@@ -46,7 +49,7 @@ function ItemDetailsPage(props) {
 
                  <hr/>
 
-                <Buttons/>
+                <Buttons item_data={item_data}/>
 
                 <hr/>
 
