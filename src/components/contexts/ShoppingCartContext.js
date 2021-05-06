@@ -31,14 +31,33 @@ export const ShoppingCartProvider = (props) => {
             _shopping_list.push(_item_data)
         }
 
-        localStorage.setItem("shopping_list", JSON.stringify(_shopping_list))
-        set_shopping_list(_shopping_list)
+        _set_new_shopping_list(_shopping_list)
+    }
+
+    const _set_new_shopping_list = (new_list) => {
+        localStorage.setItem("shopping_list", JSON.stringify(new_list))
+        set_shopping_list(new_list)
     }
 
     const remove_from_cart = (item_id) => {
         const _shopping_list = shopping_list.filter(item => item.id !== item_id)
-        localStorage.setItem("shopping_list", JSON.stringify(_shopping_list))
-        set_shopping_list(_shopping_list)
+        _set_new_shopping_list(_shopping_list)
+    }
+
+    const set_quantity = (itemId, value) => {
+        const _shopping_list = [...shopping_list]
+
+        for(let i=0; i< _shopping_list.length;i++){
+            let _item = _shopping_list[i]
+            if(_item.id === itemId){
+                if(_item.quantity + value > 0){
+                    _item.quantity += value
+                }
+                break
+            }
+        }
+
+        _set_new_shopping_list(_shopping_list)
     }
 
     const calc_count = () => {
@@ -83,7 +102,8 @@ export const ShoppingCartProvider = (props) => {
             count: count,
             total: total,
             add_to_cart: add_to_cart,
-            remove_from_cart: remove_from_cart
+            remove_from_cart: remove_from_cart,
+            set_quantity: set_quantity
         }}>
             {props.children}
         </ShoppingCartContext.Provider>
