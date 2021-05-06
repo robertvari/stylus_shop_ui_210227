@@ -67,7 +67,7 @@ function CheckoutPage(props) {
                 <h2>Contact information</h2>
 
                 <hr/>
-                <small>Already have an account? Already have an account? <Link to="/login">Log in</Link></small>
+                <small>Already have an account? <Link to="/login">Log in</Link></small>
 
                 <input type="email" placeholder="Email" value={email} onChange={e => set_email(e.target.value)}/>
 
