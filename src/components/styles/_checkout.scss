@@ -46,26 +46,26 @@
     }
   }
 
-  input{
-    font: inherit;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    width: 100%;
-    outline-color: transparent;
-    transition: outline-color 0.3s;
-    background-color: rgba(0, 0, 0, 0.05);
-
-    &:focus{
-      outline-color: #4282b8
-    }
-  }
-
   .name-container{
     display: flex;
 
     input:not(:last-child){
       margin-right: 0.6rem;
     }
+  }
+}
+
+input{
+  font: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  width: 100%;
+  outline-color: transparent;
+  transition: outline-color 0.3s;
+  background-color: rgba(0, 0, 0, 0.05);
+
+  &:focus{
+    outline-color: #4282b8
   }
 }

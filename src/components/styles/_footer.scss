@@ -30,6 +30,10 @@ footer{
         background-color: rgba(0, 0, 0, 0.1);
       }
 
+      input{
+        width: inherit;
+      }
+
       button{
         cursor: pointer;
         font: inherit;
