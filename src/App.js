@@ -14,7 +14,7 @@ import CheckoutPage from "./components/Pages/CheckoutPage";
 import SignInPage from "./components/Pages/SignInPage";
 import RegistrationPage from "./components/Pages/RegistrationPage";
 import PasswordResetPage from "./components/Pages/PasswordResetPage";
-import ShoppingCart from "./components/ShoppingCart";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
 import {ShoppingCartProvider} from "./components/contexts/ShoppingCartContext";
 
