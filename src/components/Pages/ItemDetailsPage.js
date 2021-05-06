@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import {ShoppingCartContext} from "../contexts/ShoppingCartContext";
 
@@ -19,7 +19,7 @@ function Buttons({item_data}) {
     return (
         <div className="buttons-layout">
             <button className="inverted" onClick={() => add_to_cart(item_data)}><i className="fas fa-shopping-cart"/> ADD TO CART</button>
-            <button>BUY IT NOW</button>
+            <Link to={"/checkout"}><button onClick={() => add_to_cart(item_data)}>BUY IT NOW</button></Link>
         </div>
     )
 }
