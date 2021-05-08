@@ -15,6 +15,7 @@ import SignInPage from "./components/Pages/SignInPage";
 import RegistrationPage from "./components/Pages/RegistrationPage";
 import PasswordResetPage from "./components/Pages/PasswordResetPage";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
+import PasswordResetForm from "./components/Pages/PasswordResetForm";
 
 import {ShoppingCartProvider} from "./components/contexts/ShoppingCartContext";
 
@@ -39,6 +40,8 @@ function App() {
                     <Route path="/login" component={SignInPage}/>
                     <Route path="/registration" component={RegistrationPage}/>
                     <Route path="/password-reset" component={PasswordResetPage}/>
+                    <Route path="/password-reset" component={PasswordResetPage}/>
+                    <Route path="/password-reset-form/:uid/:token" component={PasswordResetForm}/>
 
                     <Route path="/" component={Home}/>
                 </Switch>
