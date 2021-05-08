@@ -11,8 +11,6 @@ function RegistrationPage(props) {
             <form>
                 <h1>CREATE ACCOUNT</h1>
                 <hr/>
-                <input type="text" placeholder="First Name"/>
-                <input type="text" placeholder="Last Name"/>
                 <input type="email" placeholder="Email"/>
                 <input type="password" placeholder="Password"/>
 
