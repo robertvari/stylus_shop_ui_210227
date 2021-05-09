@@ -1,17 +1,20 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {UserContext} from "../contexts/UserContext";
 
 function SignInPage(props) {
-    const {log_in_user} = useContext(UserContext)
+    const {log_in_user, user_data} = useContext(UserContext)
     const [email, set_email] = useState("")
     const [password, set_password] = useState("")
+    const history = useHistory()
 
-    const log_in_action = (e) => {
+    const log_in_action = async (e) => {
         e.preventDefault()
 
         if(!email && !password) return
-        log_in_user(email, password)
+        await log_in_user(email, password)
+
+        history.push(`/profiles/${user_data.profile_url}`)
     }
 
     useEffect(() => {
