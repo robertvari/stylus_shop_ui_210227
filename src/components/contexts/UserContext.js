@@ -39,6 +39,26 @@ export const UserProvider = (props) => {
             })
     }
 
+
+    const log_out_user = async () => {
+        await axios({
+            method: "post",
+            url: `${API_URL}/auth/logout/`,
+            headers:{
+                authorization: `token ${token}`
+            }
+        }).then(res => {
+                removeCookie("token", {path: "/"})
+                set_logged_in(false)
+                set_token(null)
+            }
+        ).catch( error => {
+                console.log(error)
+            }
+        )
+    }
+
+
     useEffect(() => {
         check_token()
     })
@@ -49,7 +69,8 @@ export const UserProvider = (props) => {
             logged_in: logged_in,
             token: token,
             user_data: user_data,
-            check_token: check_token
+            check_token: check_token,
+            log_out_user: log_out_user
         }}>
             {props.children}
         </UserContext.Provider>

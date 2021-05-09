@@ -79,7 +79,7 @@ function Menu(props) {
 
 function Navbar(props) {
     const [site_info, set_site_info] = useState({})
-    const{logged_in, user_data} = useContext(UserContext)
+    const{logged_in, user_data, log_out_user} = useContext(UserContext)
 
     const fetch = () => {
         axios({
@@ -105,7 +105,7 @@ function Navbar(props) {
                             <Link to={`/profiles/${user_data.profile_url}`}>
                                 <i className="fas fa-user"/>
                             </Link>
-                            <button>Log Out</button>
+                            <button onClick={log_out_user}>Log Out</button>
                         </div>
                         :
                         <small className="sign-in-container"><Link to="/login">Sign</Link> in or <Link to="/registration">Create an Account</Link></small>
