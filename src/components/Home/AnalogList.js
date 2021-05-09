@@ -11,7 +11,7 @@ function AnalogList(props) {
     const fetch = () => {
         axios({
             method: "get",
-            url: `${API_URL}/analog`
+            url: `${API_URL}/api/shop/analog-cameras/`
         })
             .then(res => set_item_list(res.data))
             .catch(err => console.log(err))
@@ -26,7 +26,7 @@ function AnalogList(props) {
             <h4>Analog Cameras</h4>
             <div className="cards-container">
                 {
-                    item_list.map(data => <ItemCard data={data}/>)
+                    item_list.map(data => <ItemCard key={data.id} data={data}/>)
                 }
             </div>
         </div>

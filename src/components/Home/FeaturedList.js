@@ -11,7 +11,7 @@ function FeaturedList(props) {
     const fetch = () => {
         axios({
             method: "get",
-            url: `${API_URL}/featured`
+            url: `${API_URL}/api/shop/featured-cameras/`
         })
             .then(res => set_item_list(res.data))
             .catch(err => console.log(err))
@@ -26,7 +26,7 @@ function FeaturedList(props) {
             <h4>Featured</h4>
             <div className="cards-container">
                 {
-                    item_list.map(data => <ItemCard data={data}/>)
+                    item_list.map(data => <ItemCard key={data.id} data={data}/>)
                 }
             </div>
         </div>

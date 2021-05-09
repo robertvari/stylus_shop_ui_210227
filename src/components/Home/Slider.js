@@ -10,7 +10,7 @@ function Slider(props) {
     const fetch = () => {
         axios({
             method: "get",
-            url: `${API_URL}/slider`
+            url: `${API_URL}/api/shop/image-slider/`
         })
             .then(res => set_image_list(res.data))
             .catch(err => console.log(err))
@@ -36,7 +36,7 @@ function Slider(props) {
         <div className="slider-container">
             <div className="image-container">
                 {
-                    image_list.map((data, index) => <img className={`slider-image ${current_index === index? "active":""}`} src={data.image} alt=""/>)
+                    image_list.map((data, index) => <img key={data.image} className={`slider-image ${current_index === index? "active":""}`} src={data.image} alt=""/>)
                 }
             </div>
 
@@ -47,7 +47,7 @@ function Slider(props) {
 
             <div className="step-circles-container">
                 {
-                    image_list.map((data, index) => <i className={`fas fa-circle ${current_index === index? "active":""}`} onClick={()=> set_current_index(index)}/> )
+                    image_list.map((data, index) => <i key={data.image} className={`fas fa-circle ${current_index === index? "active":""}`} onClick={()=> set_current_index(index)}/> )
                 }
             </div>
 

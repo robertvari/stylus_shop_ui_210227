@@ -35,7 +35,7 @@ function ItemDetailsPage(props) {
     const fetch = () => {
         axios({
             method: "get",
-            url: `${API_URL}/items/${id}`
+            url: `${API_URL}/api/shop/shop-items/${id}`
         }).then(res => set_item_data(res.data))
     }
 

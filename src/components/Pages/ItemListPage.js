@@ -13,7 +13,7 @@ function ItemListPage(props) {
     const fetch = () => {
         axios({
             method: "get",
-            url: `${API_URL}/items`
+            url: `${API_URL}/api/shop/shop-items/`
         })
             .then(res => set_items(res.data))
             .catch(err => console.log(err))

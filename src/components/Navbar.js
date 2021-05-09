@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import axios from "axios"
 import {Link} from "react-router-dom";
 import {ShoppingCartContext} from "./contexts/ShoppingCartContext";
+import {UserContext} from "./contexts/UserContext";
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -55,7 +56,7 @@ function Menu(props) {
     const fetch = () => {
         axios({
             method: "get",
-            url: `${API_URL}/categories`
+            url: `${API_URL}/api/shop/categories/`
         })
             .then(res => set_menu_list(res.data))
             .catch(err => console.log(err))
@@ -78,11 +79,12 @@ function Menu(props) {
 
 function Navbar(props) {
     const [site_info, set_site_info] = useState({})
+    const{logged_in, user_data} = useContext(UserContext)
 
     const fetch = () => {
         axios({
             method: "get",
-            url: `${API_URL}/site_info`
+            url: `${API_URL}/api/common/siteinfo/`
         })
             .then(res => set_site_info(res.data))
             .catch(err => console.log(err))
@@ -97,7 +99,18 @@ function Navbar(props) {
 
             <div className="content">
 
-                <small className="sign-in-container"><Link to="/login">Sign</Link> in or <Link to="/registration">Create an Account</Link></small>
+                {
+                    logged_in?
+                        <div className="sign-in-container">
+                            <Link to={`/profiles/${user_data.profile_url}`}>
+                                <i className="fas fa-user"/>
+                            </Link>
+                            <button>Log Out</button>
+                        </div>
+                        :
+                        <small className="sign-in-container"><Link to="/login">Sign</Link> in or <Link to="/registration">Create an Account</Link></small>
+                }
+
 
                 <div className="search-container">
                     <Link to="/"><h1>{site_info.name}</h1></Link>
