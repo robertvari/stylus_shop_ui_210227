@@ -1,6 +1,7 @@
 import React, {useState, createContext, useEffect} from "react"
 import {useCookies} from "react-cookie";
 import axios from "axios";
+import {sleep} from "../../utilities";
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -40,6 +41,25 @@ export const UserProvider = (props) => {
     }
 
 
+    const register_user = async (email, password) => {
+        try{
+            const result = await axios({
+                method: "post",
+                url: `${API_URL}/auth/registration/`,
+                data: {
+                    email: email,
+                    password1: password,
+                    password2: password
+                }
+            })
+
+            return result.status === 201;
+
+        }catch (err){
+            return false
+        }
+    }
+
     const log_out_user = async () => {
         await axios({
             method: "post",
@@ -70,7 +90,8 @@ export const UserProvider = (props) => {
             token: token,
             user_data: user_data,
             check_token: check_token,
-            log_out_user: log_out_user
+            log_out_user: log_out_user,
+            register_user: register_user
         }}>
             {props.children}
         </UserContext.Provider>

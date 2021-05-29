@@ -17,6 +17,7 @@ import PasswordResetPage from "./components/User/PasswordResetPage";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import ProfilePage from "./components/User/ProfilePage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import RegistrationEmailSentPage from "./components/User/RegistrationEmailSentPage";
 
 import {ShoppingCartProvider} from "./components/contexts/ShoppingCartContext";
 import {UserProvider} from "./components/contexts/UserContext";
@@ -43,6 +44,7 @@ function App() {
 
                         <Route path="/login" component={SignInPage}/>
                         <Route path="/registration" component={RegistrationPage}/>
+                        <Route path="/registration-email-sent" component={RegistrationEmailSentPage}/>
                         <Route path="/password-reset" component={PasswordResetPage}/>
 
                         <ProtectedRoute path="/profiles/:profile_url" component={ProfilePage}/>
