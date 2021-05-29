@@ -2,21 +2,34 @@ import React, {Fragment, useContext, useState} from 'react';
 import {Link} from "react-router-dom";
 import CartItem from "../ShoppingCart/CartItem";
 import {ShoppingCartContext} from "../contexts/ShoppingCartContext";
+import {UserContext} from "../contexts/UserContext";
 
 function CheckoutPage(props) {
     const {count, shopping_list, total} = useContext(ShoppingCartContext)
+        const {
+        first_name,
+        set_first_name,
+        last_name,
+        set_last_name,
+        company,
+        set_company,
+        address,
+        set_address,
+        apartment,
+        set_apartment,
+        city,
+        set_city,
+        post_code,
+        set_post_code,
+        phone,
+        set_phone,
+        logged_in,
+        email,
+        set_email
+    } = useContext(UserContext)
 
     const [error, set_error] = useState(null)
 
-    const [email, set_email] = useState("")
-    const [first_name, set_first_name] = useState("")
-    const [last_name, set_last_name] = useState("")
-    const [company, set_company] = useState("")
-    const [address, set_address] = useState("")
-    const [apartment, set_apartment] = useState("")
-    const [city, set_city] = useState("")
-    const [post_code, set_post_code] = useState("")
-    const [phone, set_phone] = useState("")
 
     const _set_error = (message) => {
         set_error(message)
@@ -67,7 +80,10 @@ function CheckoutPage(props) {
             <div className="personal-data-container">
                 <h2>Contact information</h2>
                 <hr/>
-                <small>Already have an account? <Link to="/login">Log in</Link></small>
+
+                {
+                    !logged_in&& <small>Already have an account? <Link to="/login">Log in</Link></small>
+                }
 
                 <input type="email" placeholder="Email" value={email} onChange={e => set_email(e.target.value)}/>
 
