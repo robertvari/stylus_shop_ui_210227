@@ -29,13 +29,13 @@ function Buttons({item_data}) {
 }
 
 function ItemDetailsPage(props) {
-    const {id} = useParams()
+    const {slug} = useParams()
     const [item_data, set_item_data] = useState({})
 
     const fetch = () => {
         axios({
             method: "get",
-            url: `${API_URL}/api/shop/shop-items/${id}`
+            url: `${API_URL}/api/shop/shop-items/${slug}`
         }).then(res => set_item_data(res.data))
     }
 

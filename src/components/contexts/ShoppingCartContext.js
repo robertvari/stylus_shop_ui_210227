@@ -74,7 +74,7 @@ export const ShoppingCartProvider = (props) => {
 
         for(let i=0; i < shopping_list.length; i++){
             const current_item = shopping_list[i]
-            const _price = Number(current_item.price.replace(/[^0-9.-]+/g,""));
+            const _price = current_item.price
             _total += _price * current_item.quantity
         }
 

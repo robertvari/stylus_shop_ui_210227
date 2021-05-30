@@ -39,7 +39,7 @@ function App() {
                     <div className="content-container">
                     <Switch>
                         <Route path="/categories/:category/:subcategory?" component={ItemListPage}/>
-                        <Route path="/details/:id" component={ItemDetailsPage}/>
+                        <Route path="/details/:slug" component={ItemDetailsPage}/>
                         <Route path="/checkout" component={CheckoutPage}/>
 
                         <Route path="/login" component={SignInPage}/>
