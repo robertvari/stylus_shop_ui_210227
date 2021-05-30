@@ -3,6 +3,9 @@ import {Link} from "react-router-dom";
 import CartItem from "../ShoppingCart/CartItem";
 import {ShoppingCartContext} from "../contexts/ShoppingCartContext";
 import {UserContext} from "../contexts/UserContext";
+import axios from "axios";
+
+const API_URL = process.env.REACT_APP_API_URL
 
 function CheckoutPage(props) {
     const {count, shopping_list, total} = useContext(ShoppingCartContext)
@@ -25,7 +28,8 @@ function CheckoutPage(props) {
         set_phone,
         logged_in,
         email,
-        set_email
+        set_email,
+        user_id
     } = useContext(UserContext)
 
     const [error, set_error] = useState(null)
@@ -65,10 +69,31 @@ function CheckoutPage(props) {
         return true
     }
 
-    const check_out_action = () => {
-        if(check_errors()){
-            console.log("Start payment")
-        }
+    const check_out_action = async () => {
+        if(!check_errors()) return
+
+        const res = await axios({
+            method: "post",
+            url: `${API_URL}/api/shop/order/`,
+            data: {
+                payment_id: 12345,
+                amount: total * 100,
+                shopping_list: shopping_list,
+
+                customer: {
+                    user_id: user_id,
+                    email: email,
+                    first_name: first_name,
+                    last_name: last_name,
+                    company:company,
+                    address: address,
+                    apartment: apartment,
+                    city: city,
+                    post_code: post_code,
+                    phone:phone
+                }
+            }
+        })
     }
 
     const numberWithCommas = (x) => {

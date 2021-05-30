@@ -23,6 +23,7 @@ export const UserProvider = (props) => {
     const [city, set_city] = useState("")
     const [post_code, set_post_code] = useState("")
     const [phone, set_phone] = useState("")
+    const [user_id, set_user_id] = useState(null)
 
 
     const check_token = () => {
@@ -97,6 +98,7 @@ export const UserProvider = (props) => {
             }
         }).then(res => {
             let profile_data = res.data.profile
+            set_user_id(res.data.user_id)
             set_email(res.data.email)
             set_first_name(profile_data.first_name)
             set_last_name(profile_data.last_name)
@@ -149,6 +151,7 @@ export const UserProvider = (props) => {
             log_out_user: log_out_user,
             register_user: register_user,
 
+            user_id: user_id,
             email: email,
             set_email:set_email,
 
