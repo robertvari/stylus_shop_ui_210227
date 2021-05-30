@@ -18,6 +18,7 @@ import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import ProfilePage from "./components/User/ProfilePage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RegistrationEmailSentPage from "./components/User/RegistrationEmailSentPage";
+import OrderSent from "./components/Pages/OrderSent";
 
 import {ShoppingCartProvider} from "./components/contexts/ShoppingCartContext";
 import {UserProvider} from "./components/contexts/UserContext";
@@ -41,6 +42,7 @@ function App() {
                         <Route path="/categories/:category/:subcategory?" component={ItemListPage}/>
                         <Route path="/details/:slug" component={ItemDetailsPage}/>
                         <Route path="/checkout" component={CheckoutPage}/>
+                        <Route path="/payment_success" component={OrderSent}/>
 
                         <Route path="/login" component={SignInPage}/>
                         <Route path="/registration" component={RegistrationPage}/>

@@ -1,5 +1,5 @@
 import React, {Fragment, useContext, useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import CartItem from "../ShoppingCart/CartItem";
 import {ShoppingCartContext} from "../contexts/ShoppingCartContext";
 import {UserContext} from "../contexts/UserContext";
@@ -8,6 +8,8 @@ import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL
 
 function CheckoutPage(props) {
+    const history = useHistory()
+
     const {count, shopping_list, total} = useContext(ShoppingCartContext)
         const {
         first_name,
@@ -94,6 +96,10 @@ function CheckoutPage(props) {
                 }
             }
         })
+
+        if(res.data.status === "succeeded"){
+            history.push("/payment_success")
+        }
     }
 
     const numberWithCommas = (x) => {
