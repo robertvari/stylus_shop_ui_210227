@@ -4,14 +4,21 @@ import CartItem from "../ShoppingCart/CartItem";
 import {ShoppingCartContext} from "../contexts/ShoppingCartContext";
 import {UserContext} from "../contexts/UserContext";
 import axios from "axios";
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import StripeForm from "./StripeForm";
+
 
 const API_URL = process.env.REACT_APP_API_URL
+const stripePromise = loadStripe('pk_test_51HyehYF9rSH7raBvQsbdg02wPMcRm0RtwPGOxBNlB0BNRdzAQIpSeptP48fGtvNBQDAwckdPkJzTMQUPFrlYWkH500JF4oGXW5');
+
+
 
 function CheckoutPage(props) {
     const history = useHistory()
 
     const {count, shopping_list, total} = useContext(ShoppingCartContext)
-        const {
+    const {
         first_name,
         set_first_name,
         last_name,
@@ -150,14 +157,14 @@ function CheckoutPage(props) {
 
                             <hr/>
                             <div className="card-data-container">
-                                <i className="far fa-credit-card"/> Card Fielrs...
+                                <Elements stripe={stripePromise}>
+                                  <StripeForm />
+                                </Elements>
                             </div>
 
                             {
                                 error&& <div className="checkout-error">{error}</div>
                             }
-
-                            <button onClick={check_out_action}><i className="far fa-credit-card"/> Check Out</button>
 
                         </Fragment>
                         :

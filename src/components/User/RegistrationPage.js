@@ -46,7 +46,7 @@ function RegistrationPage(props) {
 
     return (
         <div className="center-page-container">
-            <form>
+            <form className="default-form">
                 <h1>CREATE ACCOUNT</h1>
                 <input type="email" placeholder="Email" value={email} onChange={e => set_email(e.target.value)}/>
                 <input type="password" placeholder="Password" value={password1} onChange={e => set_password1(e.target.value)}/>

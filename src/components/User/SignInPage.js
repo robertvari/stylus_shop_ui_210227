@@ -26,7 +26,7 @@ function SignInPage(props) {
 
     return (
         <div className="center-page-container">
-            <form>
+            <form className="default-form">
                 <h1>Sign In</h1>
                 <input type="email" placeholder="Email" value={email} onChange={e => set_email(e.target.value)}/>
                 <input type="password" placeholder="Password" value={password} onChange={e => set_password(e.target.value)}/>
